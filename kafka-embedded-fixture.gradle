@@ -1,0 +1,30 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        maven {
+            name 'PeopleNet Cloud'
+            url 'http://artifactory.dev-tools.connectedfleet.io:8081/artifactory/repo'
+        }
+    }
+    dependencies {
+        classpath "com.peoplenet:gradle-plugins:${peoplenetPluginsVersion}"
+    }
+}
+
+apply plugin: 'com.peoplenet.groovy'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile "org.springframework.kafka:spring-kafka-test:${springKafkaTestVersion}"
+    compile "org.apache.curator:curator-test:${curatorTestVersion}"
+
+    testCompile "ch.qos.logback:logback-classic:${logbackClassicVersion}"
+    testCompile "org.slf4j:jcl-over-slf4j:${jclOverSlf4jVersion}"
+    testCompile "org.codehaus.groovy:groovy-all:${groovyVersion}"
+    testCompile "org.apache.kafka:kafka-clients:${kafkaVersion}"
+    testCompile "org.apache.kafka:kafka-streams:${kafkaVersion}"
+    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}
